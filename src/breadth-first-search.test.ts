@@ -4,20 +4,26 @@ interface Node {
 }
 
 const breadthFirstSearch = (tree: Node): string[] => {
-  if (tree.children.length === 0) {
-    return ["1"];
-  }
-  if (tree.children.length === 1) {
-    return ["1", "1-1"];
-  }
-  if (tree.children.length === 2) {
-    if (tree.children[1].children.length === 0) {
-      return ["1", "1-1", "2-1"];
-    } else {
-      return ["1", "1-1", "2-1", "2-1-2"];
+  const result: string[] = [];
+  let frontier: Node[] = [tree];
+  let newFrontier: Node[] = [];
+
+  // Iterate while there is still a node that we haven't looked at
+  while (frontier.length > 0) {
+    for (let currentNode of frontier) {
+      // Add current node to result
+      result.push(currentNode.key);
+
+      // Expand the new frontier
+      newFrontier = newFrontier.concat(currentNode.children);
     }
+    // Make newFrontier the current frontier
+    frontier = newFrontier;
+    // Clear newFrontier for the next iteration
+    newFrontier = [];
   }
-  throw new Error("What?");
+
+  return result;
 };
 
 describe("breadthFirstSearch()", () => {
