@@ -1,0 +1,12 @@
+{
+  "name": "common-algorithms",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^26.0.1",
+    "ts-jest": "^26.0.0",
+    "tsc": "^1.20150623.0",
+    "typescript": "^3.9.3"
+  }
+}
